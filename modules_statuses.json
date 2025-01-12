@@ -1,0 +1,6 @@
+{
+    "Menu": true,
+    "User": true,
+    "Order": true,
+    "Payments": true
+}
