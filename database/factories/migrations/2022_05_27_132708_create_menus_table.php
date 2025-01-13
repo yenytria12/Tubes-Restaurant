@@ -11,17 +11,17 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up()    
     {
-        Schema::create('menus', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->string('image');
-            $table->decimal('price', 10, 2);
-            $table->timestamps();
-        });
+    Schema::create('menus', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->text('description')->nullable();
+        $table->decimal('price', 8, 2);
+        $table->timestamps();
+    });
     }
+
 
     /**
      * Reverse the migrations.
