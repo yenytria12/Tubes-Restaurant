@@ -8,8 +8,9 @@ class CreateUsersTable extends Migration
 {
     public function up()
     {
+    if (!Schema::hasTable('users')) {
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->char('id', 36)->primary();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -20,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('last_login_ip_address')->nullable();
         });
     }
+}
+
 
     public function down()
     {
