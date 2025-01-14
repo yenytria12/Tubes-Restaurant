@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MenuController;
@@ -40,6 +41,8 @@ Route::post('/reservations/step-two', [FrontendReservationController::class, 'st
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'contact'])->name('save.contact');
 Route::get('/thank-you', [WelcomeController::class, 'thankyou'])->name('thankyou');
+Route::get('/about', [AboutController::class, 'index'])->name('About.index');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

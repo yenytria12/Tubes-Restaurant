@@ -90,10 +90,9 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/" class="smoothScroll">HOME</a></li>
-                        <li><a href="/categories" class="smoothScroll">ABOUT</a></li>
+                        <li><a href="/about" class="smoothScroll">ABOUT</a></li>
                         <li><a href="/contact" class="smoothScroll">CONTACT</a></li>
-                        <li><a href="/reservations/step-one" class="smoothScroll">RESERVATION</a></li>
-                        <li><a href="/#" class="smoothScroll">DELIVERY ORDER</a></li>
+                        <li><a href="/menus" class="smoothScroll">MENU</a></li>
                     </ul>
                 </div>
             </div>
