@@ -1,5 +1,5 @@
 <?php
-
+use App\Models\Menu;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -14,6 +14,7 @@ use App\Http\Controllers\Frontend\ReservationController as FrontendReservationCo
 use App\Http\Controllers\Frontend\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,12 +26,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', [WelcomeController::class, 'index']);
-
+Route::get('/', [WelcomeController::class, 'index'])->name('home');
 Route::get('/categories', [FrontendCategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{category}', [FrontendCategoryController::class, 'show'])->name('categories.show');
 Route::get('/menus', [FrontendMenuController::class, 'index'])->name('menus.index');
@@ -41,7 +41,9 @@ Route::post('/reservations/step-two', [FrontendReservationController::class, 'st
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'contact'])->name('save.contact');
 Route::get('/thank-you', [WelcomeController::class, 'thankyou'])->name('thankyou');
-Route::get('/about', [AboutController::class, 'index'])->name('About.index');
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
+
 
 
 Route::get('/dashboard', function () {
