@@ -1,25 +1,26 @@
 <x-guest-layout>
 
-    <!-- home section -->
-    <section id="home" class="parallax-section">
+    <!-- Home Section -->
+    <section id="home" class="parallax-section" style="background-color: #F9F3EF;">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <h1>WELCOME TO D'ENYAH RESTAURANT</h1>
-                    <h2>GRILL &amp; COOFFE</h2>
-                    <a href="#gallery" class="smoothScroll btn btn-default" style="border-radius: 15px;">Order Now</a>
+                <div class="col-md-12 col-sm-12 text-center">
+                    <h1 style="color: #632125; font-weight: bold;">WELCOME TO D'ENYAH RESTAURANT</h1>
+                    <h2 style="color: #85443B; font-style: italic;">GRILL &amp; COFFEE</h2>
+                    <a href="#gallery" class="smoothScroll btn btn-default"
+                        style="border-radius: 15px; background-color: #632125; color: #ffffff; padding: 10px 25px; font-weight: bold; transition: background-color 0.3s ease;">Order
+                        Now</a>
                 </div>
             </div>
         </div>
     </section>
-
 
     <!-- gallery section -->
     <section id="gallery" class="parallax-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-2 col-md-8 col-sm-12 text-center">
-                    <h1 class="heading">Kategori Menu</h1>
+                    <h1 class="heading">Special Menu</h1>
                     <hr>
                 </div>
 
@@ -57,8 +58,7 @@
 
 
                     <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <a href="{{ asset('zendo_assets/images/Teh.png') }}"
-                            data-lightbox-gallery="zenda-gallery">
+                        <a href="{{ asset('zendo_assets/images/Teh.png') }}" data-lightbox-gallery="zenda-gallery">
                             <img src="{{ asset('zendo_assets/images/Teh.png') }}" alt="gallery img"
                                 style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
                         </a>
@@ -75,8 +75,7 @@
                 <div class="row">
 
                     <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <a href="{{ asset('zendo_assets/images/Sate.png') }}"
-                            data-lightbox-gallery="zenda-gallery">
+                        <a href="{{ asset('zendo_assets/images/Sate.png') }}" data-lightbox-gallery="zenda-gallery">
                             <img src="{{ asset('zendo_assets/images/Sate.png') }}" alt="gallery img"
                                 style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
                         </a>
@@ -91,8 +90,7 @@
 
 
                     <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <a href="{{ asset('zendo_assets/images/Churros.png') }}"
-                            data-lightbox-gallery="zenda-gallery">
+                        <a href="{{ asset('zendo_assets/images/Churros.png') }}" data-lightbox-gallery="zenda-gallery">
                             <img src="{{ asset('zendo_assets/images/Churros.png') }}" alt="gallery img"
                                 style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
                         </a>
@@ -107,8 +105,7 @@
 
 
                     <div class="col-md-4 col-sm-6 wow fadeInUp" data-wow-delay="0.6s">
-                        <a href="{{ asset('zendo_assets/images/boba.png') }}"
-                            data-lightbox-gallery="zenda-gallery">
+                        <a href="{{ asset('zendo_assets/images/boba.png') }}" data-lightbox-gallery="zenda-gallery">
                             <img src="{{ asset('zendo_assets/images/boba.png') }}" alt="gallery img"
                                 style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
                         </a>
@@ -128,7 +125,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-2 col-md-8 col-sm-12 text-center">
-                    <h1 class="heading">Special Menu</h1>
+                    <h1 class="heading">Kategori Menu</h1>
                     <hr>
                 </div>
 
@@ -211,7 +208,7 @@
 
 
 
-    <!-- team section
+                <!-- team section
 <section id="team" class="parallax-section">
  <div class="container">
   <div class="row">
@@ -239,56 +236,57 @@
 </section> -->
 
 
-    <!-- contact section -->
-    <section id="contact" class="parallax-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-offset-1 col-md-10 col-sm-12 text-center">
-                    <h1 class="heading">Contact Us</h1>
-                    <hr>
-                </div>
-                <div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeIn" data-wow-delay="0.9s">
-                    @if (Session::has('success'))
-                        <div class="alert alert-secondary ml-4 mr-4">
-                            {{ Session::get('success') }}
+                <!-- contact section -->
+                <section id="contact" class="parallax-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-10 col-sm-12 text-center">
+                                <h1 class="heading">Contact Us</h1>
+                                <hr>
+                            </div>
+                            <div class="col-md-offset-1 col-md-10 col-sm-12 wow fadeIn" data-wow-delay="0.9s">
+                                @if (Session::has('success'))
+                                    <div class="alert alert-secondary ml-4 mr-4">
+                                        {{ Session::get('success') }}
+                                    </div>
+                                @endif
+                                <form action="{{ route('save.contact') }}" method="POST">
+                                    @csrf
+                                    <div class="col-md-6 col-sm-6">
+                                        <input name="name" type="text" class="form-control" id="name"
+                                            placeholder="Name">
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input name="email" type="email" class="form-control" id="email"
+                                            placeholder="Email">
+                                        @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <textarea name="message" rows="8" class="form-control" id="message" placeholder="Message"></textarea>
+                                        @error('message')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
+                                        <input name="submit" type="submit" class="form-control" id="submit"
+                                            value="make a reservation">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-2 col-sm-1"></div>
                         </div>
-                    @endif
-                    <form action="{{ route('save.contact') }}" method="POST">
-                        @csrf
-                        <div class="col-md-6 col-sm-6">
-                            <input name="name" type="text" class="form-control" id="name" placeholder="Name">
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <input name="email" type="email" class="form-control" id="email"
-                                placeholder="Email">
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="col-md-12 col-sm-12">
-                            <textarea name="message" rows="8" class="form-control" id="message" placeholder="Message"></textarea>
-                            @error('message')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
-                            <input name="submit" type="submit" class="form-control" id="submit"
-                                value="make a reservation">
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md-2 col-sm-1"></div>
-            </div>
-        </div>
-    </section>
+                    </div>
+                </section>
 
 </x-guest-layout>
