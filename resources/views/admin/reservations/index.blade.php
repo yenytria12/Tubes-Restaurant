@@ -12,7 +12,7 @@
 
                 <a href="{{ route('admin.reservations.pdf') }}" class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-white">download pdf</a>
             </div>
-            
+
             <div class="flex flex-col">
                 <div class="p-6 bg-white">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -72,7 +72,7 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    document.getElementById(`deleteForm-${id}`).submit();
+                    document.getElementById(deleteForm-${id}).submit();
                 }
             });
         }
