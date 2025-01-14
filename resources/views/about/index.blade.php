@@ -7,7 +7,7 @@
     <!-- Menu Section -->
     <section id="about" class="parallax-section">
         <div class="container">
-            <h1>{{ $restaurant['name'] }}</h1>
+            <h1 class="marginatas">{{ $restaurant['name'] }}</h1>
             <p>{{ $restaurant['description'] }}</p>
 
             <!-- Visi dan Misi -->
