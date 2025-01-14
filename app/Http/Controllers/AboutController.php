@@ -14,15 +14,17 @@ class AboutController extends Controller
                 'description' => "D'ENYA Restaurant adalah sebuah restoran dengan tema klasik elegan yang menawarkan suasana hangat dan mewah, memberikan pengalaman makan yang istimewa bagi setiap pelanggan. Dengan perpaduan desain interior klasik, furnitur antik, dan pencahayaan lembut, D'ENYA menciptakan suasana yang nyaman dan bernostalgia, cocok untuk keluarga, pasangan, maupun acara formal.",
             ],
             'vision_mission' => [
-                'vision' => "Menjadi restoran terbaik dalam memberikan pengalaman kuliner tak terlupakan.",
+                'vision' => "Menjadi restoran pilihan utama yang menggabungkan cita rasa autentik dengan teknologi modern, memberikan pengalaman makan yang tak terlupakan bagi setiap pelanggan.",
                 'mission' => [
-                    "Mengutamakan kualitas makanan dan pelayanan.",
-                    "Menyediakan hidangan inovatif yang memuaskan.",
-                    "Menciptakan lingkungan bersantap yang nyaman dan berkesan.",
+                    "1. Menyajikan hidangan berkualitas tinggi dengan bahan-bahan segar dan pilihan terbaik.",
+                    "2. Mengintegrasikan teknologi modern untuk mempermudah pelanggan dalam memesan dan menikmati layanan restoran.",
+                    "3. Menghadirkan suasana yang nyaman dan ramah untuk keluarga, teman, dan komunitas.",
+                    "4. Memberikan layanan pelanggan terbaik, memastikan kepuasan pelanggan di setiap kunjungan.",
+                    "5. Mendukung produk lokal dengan bermitra dengan petani dan pemasok lokal untuk bahan masakan.",
                 ],
             ],
             'uniqueness' => [
-                'text' => "Interior yang memukau, bahan baku berkualitas tinggi, dan layanan ramah membuat kami unik.",
+                'text' => "Keunikan resto D'ENYA adalah setiap meja dilengkapi dengan perangkat digital untuk memesan makanan secara langsung. Pelanggan dapat menikmati pengalaman modern tanpa perlu memanggil pelayan, membuat layanan lebih cepat dan efisien. ",
                 'images' => [
                     'zendo_assets/images/unique1.jpg',
                     'zendo_assets/images/unique2.jpg',
