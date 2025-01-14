@@ -1,69 +1,27 @@
 <x-guest-layout>
 
-@section('title', 'Menu - Restaurant Denyah')
+    <!-- menu section -->
+    <section id="menu" class="parallax-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-0 col-md-12 col-sm-12 text-center">
+                    <h1 class="heading">Our Special Menus</h1>
+                    <hr>
+                </div>
 
-@section('content')
-    <div class="container mt-5">
-        <h2 class="text-center mb-4">Menu Restaurant D'enyah</h2>
+                @foreach ($menus as $menu)
 
-        <!-- Kategori Makanan Berat -->
-        <h3>Makanan Berat</h3>
-        <div class="row mb-5">
-            @foreach ($menus as $menu)
-                @if ($menu->category == 'Makanan Berat')
-                    <div class="col-md-4 mb-4">
-                        <div class="card shadow-sm">
-                            <img src="{{ asset('images/' . $menu->image) }}" class="card-img-top" alt="{{ $menu->name }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $menu->name }}</h5>
-                                <p class="card-text">{{ $menu->description }}</p>
-                                <p class="card-text"><strong>Rp {{ number_format($menu->price, 0, ',', '.') }}</strong></p>
-                                <a href="{{ route('order.add', $menu->id) }}" class="btn btn-outline-primary">+</a>
-                            </div>
-                        </div>
+                    <div class="col-md-4 col-sm-4 mt-4 mb-4">
+                        <img class="h-48" src="{{ Storage::url($menu->image) }}" alt="Image" />
+                        <h4 class="uppercase">{{ $menu->name }} ................ <span>{{ $menu->price }}</span></h4>
+                        <h5>{{ $menu->description }}</h5>
+                        <button class="px-4 py-2 bg-green-600 text-green-50">Order Now</button>
                     </div>
-                @endif
-            @endforeach
-        </div>
 
-        <!-- Kategori Makanan Penutup -->
-        <h3>Makanan Penutup</h3>
-        <div class="row mb-5">
-            @foreach ($menus as $menu)
-                @if ($menu->category == 'Makanan Penutup')
-                    <div class="col-md-4 mb-4">
-                        <div class="card shadow-sm">
-                            <img src="{{ asset('images/' . $menu->image) }}" class="card-img-top" alt="{{ $menu->name }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $menu->name }}</h5>
-                                <p class="card-text">{{ $menu->description }}</p>
-                                <p class="card-text"><strong>Rp {{ number_format($menu->price, 0, ',', '.') }}</strong></p>
-                                <a href="{{ route('order.add', $menu->id) }}" class="btn btn-outline-primary">+</a>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-            @endforeach
-        </div>
+                @endforeach
 
-        <!-- Kategori Minuman -->
-        <h3>Minuman</h3>
-        <div class="row mb-5">
-            @foreach ($menus as $menu)
-                @if ($menu->category == 'Minuman')
-                    <div class="col-md-4 mb-4">
-                        <div class="card shadow-sm">
-                            <img src="{{ asset('images/' . $menu->image) }}" class="card-img-top" alt="{{ $menu->name }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $menu->name }}</h5>
-                                <p class="card-text">{{ $menu->description }}</p>
-                                <p class="card-text"><strong>Rp {{ number_format($menu->price, 0, ',', '.') }}</strong></p>
-                                <a href="{{ route('order.add', $menu->id) }}" class="btn btn-outline-primary">+</a>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-            @endforeach
+            </div>
         </div>
-    </div>
-</x-guest-layout>
+    </section>
+
+    </x-guest-layout>
