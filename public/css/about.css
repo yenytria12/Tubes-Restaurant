@@ -1,0 +1,177 @@
+/* Section Heading - Styling untuk judul utama dan subjudul */
+h1, h2, h3, h4 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #632125;
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3rem;
+    color: #632125;
+}
+
+h3 {
+    font-size: 3rem;
+    color: #632125;
+}
+
+h4 {
+    font-size: 1.2rem;
+    color: #632125;
+}
+
+/* Paragraf */
+p {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.7rem; /* Memperbesar teks */
+    line-height: 1.8;
+    color: #444;
+    text-align: center; /* Memusatkan teks */
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+/* Parallax Section - Styling untuk bagian tentang restoran */
+#about {
+    background-size: cover;
+    padding: 50px 0;
+    color: #444;
+    text-align: center;
+    font-size: 1.7rem;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Styling gambar */
+.images, .unique-photo, .team-photo, .interior-photo, .testimonial-photo, .award-photo {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Membuat gambar berbaris jika terlalu banyak */
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Styling gambar */
+.images, .unique-photo, .team-photo, .interior-photo, .testimonial-photo, .award-photo {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Membuat gambar berbaris jika terlalu banyak */
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.unique-photo img, 
+.team-photo img, 
+.interior-photo img, 
+.testimonial-photo img, 
+.award-photo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Caption Foto */
+.unique-photo-caption,
+.team-photo-caption,
+.interior-photo-caption {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #666;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Kotak Maroon untuk Location dan Contact Info */
+.location-contact {
+    background-color: #632125; /* Warna maroon */
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.location-contact h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.location-contact p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* Styling untuk Testimoni */
+.testimonials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.testimonial {
+    text-align: center;
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+.testimonial-footer {
+    font-style: italic;
+    color: #666;
+}
+
+/* Penghargaan */
+.awards {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.award {
+    text-align: center;
+}
+
+.award h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Hover Effect */
+a:hover, .btn:hover {
+    background-color: #406B8D;
+}
+
+/* Responsif - untuk perangkat mobile */
+@media (max-width: 768px) {
+    .team {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .images {
+        flex-direction: column;
+    }
+
+    .awards {
+        flex-direction: column;
+    }
+
+    .location-contact {
+        text-align: left; /* Teks rata kiri pada layar kecil */
+    }
+}
