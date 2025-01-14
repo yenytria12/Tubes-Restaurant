@@ -42,6 +42,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'contact'])->name('save.contact');
 Route::get('/thank-you', [WelcomeController::class, 'thankyou'])->name('thankyou');
 Route::get('/about', [AboutController::class, 'index'])->name('About.index');
+Route::get('/admin/reservations/pdf', [ReservationController::class, 'generatePdf'])->name('admin.reservations.pdf');
 
 
 Route::get('/dashboard', function () {
