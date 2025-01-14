@@ -1,0 +1,52 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #8e44ad;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.5rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.restaurant-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.restaurant-info li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 1rem;
+    color: #8e44ad;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #6c3483;
+}
+
+h3 {
+    font-size: 1.3rem;
+    color: #8e44ad;
+    margin-bottom: 10px;
+}
