@@ -11,7 +11,7 @@ class AboutController extends Controller
         $data = [
             'restaurant' => [
                 'name' => "D'ENYA",
-                'description' => "D'ENYA adalah restoran modern yang menawarkan pengalaman kuliner berkelas dengan bahan-bahan terbaik.",
+                'description' => "D'ENYA Restaurant adalah sebuah restoran dengan tema klasik elegan yang menawarkan suasana hangat dan mewah, memberikan pengalaman makan yang istimewa bagi setiap pelanggan. Dengan perpaduan desain interior klasik, furnitur antik, dan pencahayaan lembut, D'ENYA menciptakan suasana yang nyaman dan bernostalgia, cocok untuk keluarga, pasangan, maupun acara formal.",
             ],
             'vision_mission' => [
                 'vision' => "Menjadi restoran terbaik dalam memberikan pengalaman kuliner tak terlupakan.",
