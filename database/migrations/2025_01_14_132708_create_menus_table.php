@@ -7,21 +7,22 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations.a
      *
      * @return void
      */
-    public function up()
+    public function up()    
     {
-        Schema::create('tables', function (Blueprint $table) {
+        Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('guest_number');
-            $table->string('status')->default('available');
-            $table->string('location');
+            $table->text('description');
+            $table->decimal('price', 8, 2);
+            $table->string('image');
             $table->timestamps();
-        });
+    });
     }
+
 
     /**
      * Reverse the migrations.
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tables');
+        Schema::dropIfExists('menus');
     }
 };

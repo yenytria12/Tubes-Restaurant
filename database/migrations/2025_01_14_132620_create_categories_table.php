@@ -7,15 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations.a
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('category_menu', function (Blueprint $table) {
-            $table->foreignId('category_id')->constrained();
-            $table->foreignId('menu_id')->constrained();
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->string('image');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_menu');
+        Schema::dropIfExists('categories');
     }
 };

@@ -8,21 +8,16 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
+     *a
      * @return void
      */
-    public function up()    
+    public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->decimal('price', 8, 2);
-            $table->string('image');
-            $table->timestamps();
-    });
+        Schema::create('category_menu', function (Blueprint $table) {
+            $table->foreignId('category_id')->constrained();
+            $table->foreignId('menu_id')->constrained();
+        });
     }
-
 
     /**
      * Reverse the migrations.
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('category_menu');
     }
 };
