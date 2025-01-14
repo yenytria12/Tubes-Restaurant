@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminCotroller;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ReservationController;
@@ -46,7 +46,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth', 'admin_auth'])->name('admin.')->prefix('admin')->group(function () {
-    Route::get('/', [AdminCotroller::class, 'index'])->name('index');
+    Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/categories', CategoryController::class);
     Route::resource('/menus', MenuController::class);
     Route::resource('/tables', TableController::class);
