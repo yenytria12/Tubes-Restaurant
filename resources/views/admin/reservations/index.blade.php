@@ -45,7 +45,7 @@
                                             <form id="deleteForm-{{ $reservation->id }}" class="px-4 py-2 bg-red-500 hover:bg-red-700 rounded-lg text-white" action="{{ route('admin.reservations.destroy', $reservation->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="button" onclick="confirmDelete({{ $reservation->id }})" class="w-full">Delete</button>
+                                                <button type="button" onclick="confirmDelete('{{ $reservation->id }}')" class="w-full">Delete</button>
                                             </form>
                                         </div>
                                     </td>
