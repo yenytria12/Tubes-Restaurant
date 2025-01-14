@@ -47,13 +47,12 @@
                         <td class="px-6 py-4 text-right">
                         <div class="flex space-x-2">
                             <a href="{{ route('admin.categories.edit', $category->id) }}" class="font-medium text-white hover:underline bg-green-500 hover:bg-green-700 rounded-lg px-4 py-2">Edit</a>
-                            <form class="px-4 py-2 bg-red-500 hover:bg-red-700 rounded-lg text-white"
+                            <form id="deleteForm-{{ $category->id }}" class="px-4 py-2 bg-red-500 hover:bg-red-700 rounded-lg text-white"
                                 action="{{ route('admin.categories.destroy', $category->id) }}"
-                                method="post"
-                                onsubmit="return confirm('Are you sure?');">
+                                method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit">Delete</button>
+                                <button type="button" onclick="confirmDelete('{{ $category->id }}')" class="w-full">Delete</button>
                             </form>
                         </div>
                         </td>
@@ -67,6 +66,23 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(`deleteForm-${id}`).submit();
+                }
+            });
+        }
+    </script>
 
 </x-admin-layout>
