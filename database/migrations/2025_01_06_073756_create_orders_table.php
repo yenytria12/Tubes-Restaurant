@@ -8,6 +8,7 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * apa gitu
      */
     public function up(): void
     {
@@ -25,3 +26,4 @@ return new class extends Migration
         Schema::dropIfExists('order');
     }
 };
+
