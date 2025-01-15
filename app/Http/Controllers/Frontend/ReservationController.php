@@ -1,114 +1,72 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Frontend;
 
 use App\Helpers\Constant;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ReservationStoreRequest;
 use App\Models\Reservation;
 use App\Models\Table;
+use App\Rules\DateBetween;
+use App\Rules\TimeBetween;
 use Carbon\Carbon;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function stepOne(Request $request)
     {
-        $reservations = Reservation::with('table')->get(); // Eager loading table untuk mengurangi query N+1
-        return view('admin.reservations.index', compact('reservations'));
+        $reservation = $request->session()->get('reservation');
+        $min_date = Carbon::today();
+        $max_date = Carbon::now()->addWeek();
+        return view('reservations.step-one', compact('reservation', 'min_date', 'max_date'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function storeStepOne(Request $request)
     {
-        $tables = Table::where('status', Constant::TABLE_STATUS['Available'])->get();
-        return view('admin.reservations.create', compact('tables'));
-    }
+        $validated = $request->validate([
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'email' => ['required', 'email'],
+            'tel_number' => ['required'],
+            'res_date' => ['required', 'date', new DateBetween, new TimeBetween],
+            'guest_number' => ['required']
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(ReservationStoreRequest $request)
-    {
-        $table = Table::findOrFail($request->table_id);
-
-        // Validasi jumlah tamu
-        if ($request->guest_number > $table->guest_number) {
-            return back()->with('warning', 'Please choose the table based on guests.');
+        if (empty($request->session()->get('reservation'))) {
+            $reservation = new Reservation();
+            $reservation->fill($validated);
+            $request->session()->put('reservation', $reservation);
+        } else {
+            $reservation = $request->session()->get('reservation');
+            $reservation->fill($validated);
+            $request->session()->put('reservation', $reservation);
         }
 
-        // Validasi tanggal reservasi
-        $request_date = Carbon::parse($request->res_date);
-        foreach ($table->reservations as $res) {
-            if ($res->res_date->isSameDay($request_date)) {
-                return back()->with('warning', 'This table is reserved for this date.');
-            }
-        }
-
-        // Buat reservasi
-        Reservation::create($request->validated());
-
-        return to_route('admin.reservations.index')->with('success', 'Reservation created successfully!');
+        return to_route('reservations.step.two');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Reservation $reservation)
+    public function stepTwo(Request $request)
     {
-        $tables = Table::where('status', Constant::TABLE_STATUS['Available'])->get();
-        return view('admin.reservations.edit', compact('reservation', 'tables'));
+        $reservation = $request->session()->get('reservation');
+        $res_table_ids = Reservation::orderBy('res_date')->get()->filter(function ($value) use ($reservation) {
+            return $value->res_date == $reservation->res_date;
+        })->pluck('table_id');
+        $tables = Table::where('status', Constant::TABLE_STATUS['Available'])
+            ->where('guest_number', '>=', $reservation->guest_number)
+            ->whereNotIn('id', $res_table_ids)->get();
+        return view('reservations.step-two', compact('reservation', 'tables'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(ReservationStoreRequest $request, Reservation $reservation)
+    public function storeStepTwo(Request $request)
     {
-        $table = Table::findOrFail($request->table_id);
+        $validated = $request->validate([
+            'table_id' => ['required']
+        ]);
+        $reservation = $request->session()->get('reservation');
+        $reservation->fill($validated);
+        $reservation->save();
+        $request->session()->forget('reservation');
 
-        // Validasi jumlah tamu
-        if ($request->guest_number > $table->guest_number) {
-            return back()->with('warning', 'Please choose the table based on guests.');
-        }
-
-        // Validasi tanggal reservasi
-        $request_date = Carbon::parse($request->res_date);
-        $reservations = $table->reservations()->where('id', '!=', $reservation->id)->get();
-        foreach ($reservations as $res) {
-            if ($res->res_date->isSameDay($request_date)) {
-                return back()->with('warning', 'This table is reserved for this date.');
-            }
-        }
-
-        // Update reservasi
-        $reservation->update($request->validated());
-
-        return to_route('admin.reservations.index')->with('success', 'Reservation updated successfully!');
-    }
-
-    /**
-     * Export reservations to PDF.
-     */
-    public function exportPdf()
-    {
-        $reservations = Reservation::with('table')->get();
-        $pdf = Pdf::loadView('admin.reservations.pdf', compact('reservations'));
-        return $pdf->download('reservations.pdf');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Reservation $reservation)
-    {
-        $reservation->delete();
-
-        return to_route('admin.reservations.index')->with('danger', 'Reservation deleted successfully.');
+        return to_route('thankyou');
     }
 }
